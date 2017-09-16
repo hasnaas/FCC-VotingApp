@@ -1,0 +1,69 @@
+doctype html
+html(lang='en')
+    head
+        title= title
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        script(src="https://d3js.org/d3.v4.min.js")
+        script(src="/js/colorbrewer.min.js")
+        link(rel='stylesheet', href='/css/style.css')
+        
+    body
+        nav(class="navbar navbar-default")
+            div(class="container-fluid")
+                div(class="navbar-header")
+                    button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                    a(class="navbar-brand" href="/polls") Voting App
+
+                div(class="collapse navbar-collapse" id="navbar1")
+                    ul(class="nav navbar-nav navbar-right")
+                        li(class=active=="home"?"active":"")
+                            a(href="/polls") Home
+                        if user
+                            li(class=active=="mypolls"?"active":"")
+                                a(href="/mypolls") My Polls
+                            li(class=active=="newpoll"?"active":"")
+                                a(href="/newpoll") New Poll
+                            li 
+                                div(class="dropdown")
+                                    button(class="dropdown-toggle btn logout" type="toggle" data-toggle="dropdown") #{user.name} 
+                                        span(class="caret")
+                                    ul(class="dropdown-menu")
+                                        li 
+                                            a(href="/logout" class="btn btn-large btn-info text-center") logout
+                                
+                                    
+                        if !user
+                            li(class=active=="signin"?'active':'')
+                                //a(href="/auth/twitter" onclick=' var left = (screen.width/2)-(250); var top = (screen.height/2)-(250); return !window.open(this.href, "Sign in with Twitter", "width=500,height=500,position=absolute,left="+left+",top="+top)' target="_blank") Sign In with Twitter
+                                a(href="/auth/twitter") Sign In with Twitter
+                                
+              
+        div(class="jumbotron")
+            block content
+                
+        footer(class="section section-primary")
+            div(class="container-fluid" id="thefooter")
+                h5(class="text-center") VotingApp 2017 
+                     i(class="fa fa-copyright")  All rights reserved 
+                h6(class="text-center") Made by 
+                     a(href="http://github.com/hasnaas") Hasna &nbsp; 
+                      span(class="sm-circle")
+                        a(href="https://www.twitter.com/hasna5" target="_blank")
+                              i(class="fa fa-twitter sm") &nbsp; 
+                            
+                      span(class="sm-circle")
+                        a(href="https://www.linkedin.com/hasnaas" target="_blank")
+                              i(class="fa fa-linkedin sm") &nbsp; 
+
+        script(src="/js/main.js")    
+                    
+            
+

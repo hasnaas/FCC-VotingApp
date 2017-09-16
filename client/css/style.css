@@ -1,0 +1,109 @@
+
+body{
+    font-family:Verdana, Serif;
+    color:black;
+}
+a,a:hover{
+    text-decoration:none;
+    color:white!important;
+}
+/*layout page*/
+nav{
+    background-color:blue !important;
+    color:white;
+    
+}
+
+#navbar1 ul li{
+  display:inline-block;
+}
+.logout{
+    padding-top:15px;
+    background-color:blue;
+    color:white;
+}
+.logout:hover{
+    color:white;
+}
+.dropdown-menu .btn-info{
+   margin-left:20px;
+/*    margin-right:10px; */
+    background-color:blue;
+    width:90%;
+}
+
+.jumbotron{
+    margin-left:20px;
+    margin-right:20px;
+    background-color:white;
+}
+.jumbotron a{
+    color:blue!important;
+}
+.jumbotron a:hover{
+    color:white!important;
+}
+
+#thefooter{
+    background-color:blue;
+    color:white;
+}
+
+/*welcome page */
+
+h1,h4{
+    color:blue!important;
+}
+#thetable{
+    width:80%;
+    border-radius:10px;
+}
+table{
+    width:100%;
+    
+}
+tr{
+    border:2px solid blue;
+}
+td{
+    background-color:white;
+      padding-top:10px;
+    padding-bottom:10px;
+    text-align:center;
+    color:blue!important;
+}
+td a{
+    color:blue;
+}
+td:hover{
+    background-color:blue;
+    color:white!important;
+}
+
+
+/*update poll page*/
+.update select{
+    width:80%;
+}
+
+.update label,h3 {
+    margin-left:10%;
+}
+.update .btn{
+    width:80%;
+    margin-bottom:10px;
+}
+.update input{
+    width:80%;
+}
+
+/*svg animation*/
+.arc path {
+  stroke: #fff;
+}
+
+/*creat new poll page */
+.myform{
+    margin-left:15px;
+    margin-right:15px;
+}

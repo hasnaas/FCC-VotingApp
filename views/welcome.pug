@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div(class="jumbotron")
+        h1(class="text-center") The Voting App
+        h4(class="text-center") Select a poll to see the results and vote, or 
+            if user
+                a(href="/newpoll") make a new poll!
+            else
+                | sign-in to make a new poll.
+        if polls_list
+            div#thetable(class="center-block")
+                table
+                    each p in polls_list
+                        tr(class="text-center")
+                            td(class="text-center") 
+                                a(href='/poll/'+p._id) #{p.title}
+        
+                    
+            

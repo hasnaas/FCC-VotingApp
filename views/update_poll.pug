@@ -1,0 +1,44 @@
+extends layout
+block content
+    div(class="jumbotron update")
+        div(class="row")
+            div(class="col-sm-5" id="col1")
+                h3(class="text-left") #{poll.title}
+                form#vote(method="post" action="")
+                    div(class="form-group")
+                        label(for="sel1") I'd like to vote for ...
+                        select#sel1(class="form-control center-block" type="select" required="true" name="sel1" onchange="is_custom()")
+                            option(selected disabled hidden) Choose an option..
+                            each e in options_list
+                                option(value=e) #{e}
+                            option(value="custom") I'd like a custom option
+                    div(class="form-group")
+                        label#lsel2(for="sel2") Vote on my own option
+                        input#sel2(class="form-control center-block" type="text" name="sel2")
+                    button#submitvote(class="btn btn-info btn-large center-block" type="submit") Submit
+                //button(class="btn btn-info btn-large center-block" type="button" onclick='return popitup(mypoll.id)') Share on twitter  
+                    i(class="fa fa-twitter")
+                //see urlencoding https://www.w3schools.com/TAGs/ref_urlencode.asp
+                // https://stackoverflow.com/questions/3219325/javascript-jquery-open-current-link-in-pop-up-window
+                a(class="btn btn-info btn-large center-block"  href="https://twitter.com/intent/tweet?text="+poll.title+'%7C fccVoting &url=https://voting-app-hasnaas.c9users.io/poll/'+poll._id  onclick=' var left = (screen.width/2)-(250); var top = (screen.height/2)-(250); return !window.open(this.href, "Share on Twitter", "width=500,height=500,position=absolute,left="+left+",top="+top)' target="_blank") Share on twitter  
+                
+                if errors 
+                    ul
+                        for error in errors
+                            li!= error.msg  
+                    
+    
+            div(class="col-sm-7" id="col2")
+                svg(class="center-block")
+                if user
+                    if user._id.toString() === poll.owner.toString()
+                        form#deletepoll(method="post" action="/poll/delete" onsubmit='return confirm("Are you sure?")')
+                            input(type="hidden" name="pollid" value=poll._id)
+                            button(class="btn btn-large btn-danger center-block" type="submit") Remove this poll
+            
+    script.
+        var mypoll=!{JSON.stringify(poll)};
+    script(src="/js/main.js")
+            
+            
+            
