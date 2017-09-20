@@ -1,15 +1,31 @@
 var Poll=require('../models/poll');
-
+var User=require('../models/user');
 //all polls
 exports.polls_list=function(req,res,next){
     Poll.find({}).exec(function(err,list_polls){
     if(err) {next(err);}
-    if(req.isAuthenticated){
-       res.render('welcome',{title:'VotingApp',polls_list:list_polls,user:req.user,active:"home"});  
+    //find the trending poll, with most voters
+    var nbvoters=0;
+    var trending;
+    console.log(list_polls[0].title);
+    for(var i=0;i<list_polls.length;i++){
+        if(nbvoters<(list_polls[i].a_voters.length+list_polls[i].a_voters.length)){
+            trending=list_polls[i];
+            nbvoters=list_polls[i].a_voters.length+list_polls[i].a_voters.length;
+        }
+    }
+        User.find({}).count(function(err,count){
+        if(err) return next(err);
+        console.log(trending.title);
+        if(req.isAuthenticated){
+      
+       res.render('welcome',{title:'VotingApp',polls_list:list_polls,randompoll:trending,nbusers:count,user:req.user,active:"home"});  
     }
        else{
-        res.render('welcome',{title:'VotingApp',polls_list:list_polls,active:"home"});    
-       }
+        res.render('welcome',{title:'VotingApp',polls_list:list_polls,randompoll:trending,nbusers:count,active:"home"});    
+       }            
+        });
+
        
     });
     
@@ -20,7 +36,7 @@ exports.mypolls_list=function(req,res,next){
     
     Poll.find({owner:req.user._id}).exec(function(err,list_polls){
     if(err) {next(err);}
-       res.render('welcome',{title:'VotingApp',polls_list:list_polls,user:req.user,active:"mypolls"}); 
+       res.render('welcome2',{title:'VotingApp',polls_list:list_polls,user:req.user,active:"mypolls"}); 
     });
     
     
@@ -38,7 +54,7 @@ exports.poll_details=function(req,res,next){
 
 //update a poll
 exports.update_poll=function(req,res,next){
-    req.checkBody('sel1', 'Invalid option').isAlphanumeric();
+    req.checkBody('sel1', 'Invalid option').matches(/^[a-zA-Z0-9' ']*$/);
     req.sanitizeBody('sel1').escape().trim();
     
     var errors = req.validationErrors();
@@ -106,7 +122,7 @@ exports.update_poll=function(req,res,next){
 //create a new poll
 exports.create_poll=function(req,res,next){
   //validation and sanitization of entered fields
-  req.checkBody('title', 'Invalid title').isAlphanumeric();
+  req.checkBody('title', 'Invalid title').matches(/^[a-zA-Z0-9' ']*$/);
   req.checkBody('options','Invalid option(s)').areOptions();
   
   req.sanitizeBody('title').escape().trim();

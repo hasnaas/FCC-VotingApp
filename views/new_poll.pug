@@ -1,6 +1,7 @@
 extends layout
 block content
-    h2(class="text-center") Make a new Poll
+    div(class="card center-block")
+        h2(class="text-center") Make a new Poll
     form(method='post' action='' class="myform")
         div.form-group
             label(for='title') Title :
@@ -10,7 +11,7 @@ block content
             input#options.form-control(type='text-area' placeholder="Options, separated by commas" name='options' required='true' value=(poptions===undefined?'':poptions))
         div.form-group
             input#userid.form-control(type='hidden',name='userid', required='true', value=user._id )
-            button.btn.btn-primary(type='submit') Make
+            button.btn.btn-primary.btn-lg(type='submit') Make!
     
     if errors 
         ul

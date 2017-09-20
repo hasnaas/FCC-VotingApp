@@ -21,6 +21,8 @@ html(lang='en')
                         span(class="icon-bar")
                         span(class="icon-bar")
                     a(class="navbar-brand" href="/polls") Voting App
+                        span 
+                            img(src="/img/iconPoll1.png" width="20" height="20")
 
                 div(class="collapse navbar-collapse" id="navbar1")
                     ul(class="nav navbar-nav navbar-right")
@@ -37,7 +39,7 @@ html(lang='en')
                                         span(class="caret")
                                     ul(class="dropdown-menu")
                                         li 
-                                            a(href="/logout" class="btn btn-large btn-info text-center") logout
+                                            a(href="/logout" class="btn") logout
                                 
                                     
                         if !user
@@ -46,7 +48,7 @@ html(lang='en')
                                 a(href="/auth/twitter") Sign In with Twitter
                                 
               
-        div(class="jumbotron")
+        div(class="jumbotron center-block")
             block content
                 
         footer(class="section section-primary")

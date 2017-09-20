@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div(class="card center-block")
+        h1(class="text-center") List of your polls
+    h3(class="text-center") Vote, manage your polls or  
+            a(href="/newpoll") make a new one!
+            
+    if polls_list
+        div#thetable(class="card center-block")
+            table
+                each p in polls_list
+                    tr(class="text-center")
+                        td(class="text-center") 
+                            a(href='/poll/'+p._id) #{p.title}
+        
+        

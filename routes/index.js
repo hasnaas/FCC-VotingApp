@@ -32,7 +32,10 @@ router.get('/poll/:id',poll_controller.poll_details);
 router.post('/poll/:id',poll_controller.update_poll); 
 /*create a new poll */
 router.get('/newpoll',function(req,res){
-    res.render('new_poll',{title:"VotingApp",user:req.user,active:"newpoll"});
+    if(req.isAuthenticated)
+      res.redirect('/polls');
+    else
+      res.render('new_poll',{title:"VotingApp",user:req.user,active:"newpoll"});
 })
 router.post('/newpoll',poll_controller.create_poll);
 

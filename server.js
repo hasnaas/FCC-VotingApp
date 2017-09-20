@@ -34,7 +34,7 @@ app.use(expressValidator({
       //opts = opts.filter(function(opt) { return /\S/.test(opt) });
       var nb=0;
       opts.forEach(function(opt){
-        if(/^[a-zA-Z0-9]*$/.test(opt))
+        if(/^[a-zA-Z0-9' ']*$/.test(opt))
         nb++;
       });
       return nb==opts.length;

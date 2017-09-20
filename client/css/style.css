@@ -1,59 +1,35 @@
 
 body{
     font-family:Verdana, Serif;
-    color:black;
+    background-image:url('https://static.pexels.com/photos/268415/pexels-photo-268415.jpeg');
+    color:#5498BB;
 }
-a,a:hover{
-    text-decoration:none;
-    color:white!important;
-}
+
 /*layout page*/
-nav{
-    background-color:blue !important;
-    color:white;
-    
-}
 
 #navbar1 ul li{
   display:inline-block;
 }
 .logout{
     padding-top:15px;
-    background-color:blue;
-    color:white;
-}
-.logout:hover{
-    color:white;
-}
-.dropdown-menu .btn-info{
-   margin-left:20px;
-/*    margin-right:10px; */
-    background-color:blue;
-    width:90%;
+    background-color:#F8F8F8;
+    color:#765E5E;
 }
 
 .jumbotron{
-    margin-left:20px;
+    max-width:70%;
+   /* margin-left:20px;
     margin-right:20px;
-    background-color:white;
-}
-.jumbotron a{
-    color:blue!important;
-}
-.jumbotron a:hover{
-    color:white!important;
+    */
+    border-radius:10px;
+
 }
 
 #thefooter{
-    background-color:blue;
-    color:white;
+    background-color:#EEEEEE;
 }
-
 /*welcome page */
 
-h1,h4{
-    color:blue!important;
-}
 #thetable{
     width:80%;
     border-radius:10px;
@@ -62,24 +38,32 @@ table{
     width:100%;
     
 }
+/*thead, tbody { display: block; }
+
+tbody {
+    width:100%;
+    height: 550px;       
+    overflow-y: auto;    
+    overflow-x: hidden;  
+}
+*/
 tr{
-    border:2px solid blue;
+    border:2px solid #eee;
 }
 td{
     background-color:white;
       padding-top:10px;
     padding-bottom:10px;
     text-align:center;
-    color:blue!important;
-}
-td a{
-    color:blue;
-}
-td:hover{
-    background-color:blue;
-    color:white!important;
 }
 
+.card{
+    max-width:80%;
+    padding:20px;
+    background-color:white;
+    border-radius:10px;
+    overflow:auto;
+}
 
 /*update poll page*/
 .update select{
@@ -106,4 +90,7 @@ td:hover{
 .myform{
     margin-left:15px;
     margin-right:15px;
+}
+#delete{
+    margin-top:20px;
 }

@@ -1,20 +1,37 @@
 extends layout
 
 block content
-    div(class="jumbotron")
+    div(class="card center-block")
         h1(class="text-center") The Voting App
-        h4(class="text-center") Select a poll to see the results and vote, or 
-            if user
-                a(href="/newpoll") make a new poll!
-            else
-                | sign-in to make a new poll.
-        if polls_list
-            div#thetable(class="center-block")
-                table
-                    each p in polls_list
-                        tr(class="text-center")
-                            td(class="text-center") 
-                                a(href='/poll/'+p._id) #{p.title}
+    div(class="row")
+        div(class="col-sm-6")
+            h3(class="text-center") Select a poll to vote, or 
+                if user
+                    a(href="/newpoll") make a new poll!
+                else
+                    | sign-in to make a new poll.
+            if polls_list
+                div#thetable(class="card center-block")
+                    table
+                        each p in polls_list
+                            tr(class="text-center")
+                                td(class="text-center") 
+                                    a(href='/poll/'+p._id) #{p.title}
         
-                    
+        div(class="col-sm-6")
+            if randompoll
+                h3(class="text-center") Trending : 
+                    br
+                    | #{randompoll.title}
+                div(class="card center-block")
+                    svg
+                
+            h3(class="text-center") Site statistics
+            div(class="card center-block")
+                p Total users: #{nbusers}
+                p Total polls : #{polls_list.length}
+        
+    script.
+        var mypoll=!{JSON.stringify(randompoll)};
+    script(src="/js/main.js")               
             
