@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use('/',index);
 
 
-var Listener =app.listen(8080,function(){
+var Listener =app.listen(process.env.PORT||8080,function(){
   console.log("server listening at port : "+Listener.address().port);
 });
 

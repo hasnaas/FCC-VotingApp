@@ -7,7 +7,6 @@ exports.polls_list=function(req,res,next){
     //find the trending poll, with most voters
     var nbvoters=0;
     var trending;
-    console.log(list_polls[0].title);
     for(var i=0;i<list_polls.length;i++){
         if(nbvoters<(list_polls[i].a_voters.length+list_polls[i].a_voters.length)){
             trending=list_polls[i];
@@ -33,11 +32,16 @@ exports.polls_list=function(req,res,next){
 };
 //list of polls owned by a user 
 exports.mypolls_list=function(req,res,next){
-    
+    if(req.user){
     Poll.find({owner:req.user._id}).exec(function(err,list_polls){
     if(err) {next(err);}
        res.render('welcome2',{title:'VotingApp',polls_list:list_polls,user:req.user,active:"mypolls"}); 
-    });
+    });    
+    }
+    else{
+        res.redirect('/polls');
+    }
+    
     
     
 };
